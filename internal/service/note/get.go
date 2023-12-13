@@ -6,11 +6,10 @@ import (
 	"github.com/plusik10/note-service-api/internal/model"
 )
 
-func (s *service) Get(ctx context.Context, id int64) (model.Note, error) {
+func (s *noteService) Get(ctx context.Context, id int64) (*model.Note, error) {
 	note, err := s.repo.Get(ctx, id)
 	if err != nil {
-		return model.Note{}, err
+		return nil, err
 	}
-
 	return note, nil
 }

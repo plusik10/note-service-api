@@ -13,5 +13,6 @@ func (n *Note) GetList(ctx context.Context, req *emptypb.Empty) (*desc.GetListRe
 	if err != nil {
 		return nil, err
 	}
-	return &desc.GetListResponse{Notes: converter.ToDescFromNotes(notes)}, nil
+
+	return converter.ToDescGetListResponse(notes), nil
 }

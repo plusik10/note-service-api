@@ -1,9 +1,13 @@
 package note
 
-import "context"
+import (
+	"context"
 
-func (s *service) Create(ctx context.Context, title string, author string, text string) (int64, error) {
-	id, err := s.repo.Create(ctx, title, author, text)
+	"github.com/plusik10/note-service-api/internal/model"
+)
+
+func (s *noteService) Create(ctx context.Context, info *model.NoteInfo) (int64, error) {
+	id, err := s.repo.Create(ctx, info)
 	if err != nil {
 		return 0, err
 	}

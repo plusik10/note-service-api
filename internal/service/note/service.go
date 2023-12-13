@@ -2,15 +2,15 @@ package note
 
 import (
 	"github.com/plusik10/note-service-api/internal/repository"
-	def "github.com/plusik10/note-service-api/internal/service"
+	"github.com/plusik10/note-service-api/internal/service"
 )
 
-var _ def.NoteService = (*service)(nil)
+var _ service.NoteService = (*noteService)(nil)
 
-type service struct {
+type noteService struct {
 	repo repository.NoteRepository
 }
 
-func NewService(repo repository.NoteRepository) def.NoteService {
-	return &service{repo: repo}
+func NewNoteService(repo repository.NoteRepository) service.NoteService {
+	return &noteService{repo: repo}
 }

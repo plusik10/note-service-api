@@ -2,12 +2,13 @@ package note
 
 import (
 	"context"
-	"fmt"
+
+	"github.com/plusik10/note-service-api/internal/model"
 )
 
-func (s *service) Update(ctx context.Context, id int64, title string, author string, text string) error {
-	if err := s.repo.Update(ctx, id, title, author, text); err != nil {
-		return fmt.Errorf("error updating a record: %s", err.Error())
+func (s *noteService) Update(ctx context.Context, id int64, info *model.UpdateNoteInfo) error {
+	if err := s.repo.Update(ctx, id, info); err != nil {
+		return err
 	}
 
 	return nil

@@ -8,9 +8,10 @@ import (
 )
 
 func (n *Note) Get(ctx context.Context, req *desc.GetRequest) (*desc.GetResponse, error) {
-	note, err := n.noteService.Get(ctx, req.GetId())
+	res, err := n.noteService.Get(ctx, req.GetId())
 	if err != nil {
 		return nil, err
 	}
-	return &desc.GetResponse{Note: converter.ToDescFromNote(note)}, nil
+
+	return &desc.GetResponse{Note: converter.ToDescNote(res)}, nil
 }
